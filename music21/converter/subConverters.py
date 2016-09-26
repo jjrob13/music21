@@ -784,7 +784,8 @@ class ConverterMusicXML(SubConverter):
             musescoreRun += " -r " + str(keywords['dpi'])
         if common.runningUnderIPython():
             musescoreRun += " -r " + str(defaults.ipythonImageDpi)
-        
+            
+        musescoreRun = 'export DISPLAY=":0.0"; ' + musescoreRun
         storedStrErr = sys.stderr
         fileLikeOpen = six.StringIO()
         sys.stderr = fileLikeOpen
