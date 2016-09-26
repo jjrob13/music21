@@ -2381,7 +2381,11 @@ class Music21Object(object):
                 and self.sites.hasSiteId(id(useSite))):
             insertIndex = self.sites.siteDict[id(useSite)].globalSiteIndex
         elif self.activeSite is not None:
-            insertIndex = self.sites.siteDict[id(self.activeSite)].globalSiteIndex
+            if self.sites.hasSiteId(id(self.activeSite)):
+                t = id(self.activeSite)
+            else:
+                t = self.activeSite.id
+            insertIndex = self.sites.siteDict[t].globalSiteIndex
         else:
             insertIndex = 0
 
